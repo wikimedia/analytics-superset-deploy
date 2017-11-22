@@ -1,0 +1,6 @@
+checks:
+  build_virtualenv:
+    type: command
+    stage: promote
+    timeout: 300
+    command: bash /srv/deployment/analytics/superset/deploy/create_virtualenv.sh
