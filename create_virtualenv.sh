@@ -1,14 +1,5 @@
-dist=$(lsb_release --codename --short)
-deploy_dir=$(dirname $0)
-wheels_dir=$deploy_dir/artifacts/$dist
-
-# Default deploy directory, should exist in production.
-if [ -e /srv/deployment/analytics/superset ]; then
-    venv=/srv/deployment/analytics/superset/venv
-# Else just use ../superset-venv for testing.
-else
-    venv=$deploy_dir/../superset-venv
-fi
+# source common variables
+source $(dirname $0)/profile.sh
 
 # remove any existing virtualenv
 rm -rfv $venv

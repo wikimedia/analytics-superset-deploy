@@ -1,6 +1,9 @@
 # Install all dependencies into artifacts/$dist.  This should only be run
 # on a build server.
 
+# source common variables
+source $(dirname $0)/profile.sh
+
 sudo apt-get --yes install \
   python-pip \
   python-wheel \
@@ -18,8 +21,6 @@ sudo apt-get --yes install \
 # will be byte for byte identical.
 export SOURCE_DATE_EPOCH=1512574740
 
-dist=$(lsb_release --codename --short)
-wheels_dir=$(dirname $0)/artifacts/$dist
 
 rm -rf $wheels_dir
 mkdir -p $wheels_dir
