@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Install all dependencies into artifacts/$dist.  This should only be run
 # on a build server.
 

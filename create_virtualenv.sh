@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -ex
+
 # source common variables
 source $(dirname $0)/profile.sh
 

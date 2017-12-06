@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Common variables for build and deploy scripts.
 
 deploy_dir=$(dirname $0)
