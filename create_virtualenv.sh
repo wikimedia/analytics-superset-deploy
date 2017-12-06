@@ -3,7 +3,7 @@ deploy_dir=$(dirname $0)
 wheels_dir=$deploy_dir/artifacts/$dist
 
 # Default deploy directory, should exist in production.
-if [ -d /srv/deployment/analytics/superset ]; then
+if [ -e /srv/deployment/analytics/superset ]; then
     venv=/srv/deployment/analytics/superset/venv
 # Else just use ../superset-venv for testing.
 else
