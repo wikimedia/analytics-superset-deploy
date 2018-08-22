@@ -30,7 +30,7 @@ sudo apt-get --yes install \
 # If you update any requirements, you should also update this timestamp.
 # This makes it more likely that wheels built with the same versions
 # will be byte for byte identical.
-export SOURCE_DATE_EPOCH=1515093288
+export SOURCE_DATE_EPOCH=1534958257
 
 rm -rf $wheels_dir
 mkdir -p $wheels_dir
@@ -49,4 +49,4 @@ virtualenv --python python3 --system-site-packages $build_venv
 # actually install.
 $build_venv/bin/pip wheel -w $wheels_dir numpy
 $build_venv/bin/pip install --no-index --find-links $wheels_dir numpy
-$build_venv/bin/pip wheel -w $wheels_dir -r $(dirname $0)/frozen-requirements.txt
+$build_venv/bin/pip wheel --trusted-host pypi.org --trusted-host files.pythonhosted.org -w $wheels_dir -r $deploy_dir/frozen-requirements.txt
