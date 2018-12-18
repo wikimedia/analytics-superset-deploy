@@ -35,6 +35,8 @@ export SOURCE_DATE_EPOCH=1534958257
 rm -rf $wheels_dir
 mkdir -p $wheels_dir
 
+
+
 # Build in a virtualenv, but install wheel files to $wheels_dir.
 build_venv=/tmp/superset-build-venv
 test -e $build_venv && rm -rf $build_venv
@@ -45,8 +47,6 @@ virtualenv --python python3 --system-site-packages $build_venv
 # Build this wheel first and install it into our build virtualenv.
 # This will let pandas build against the version of numpy that we will
 # actually install.
-
 $build_venv/bin/pip wheel -w $wheels_dir numpy
 $build_venv/bin/pip install --no-index --find-links $wheels_dir numpy
-$build_venv/bin/pip wheel --trusted-host pypi.org --trusted-host files.pythonhosted.org -w $wheels_dir -r $deploy_dir/frozen-requirements-0.28.1.txt
-$build_venv/bin/pip wheel -w $wheels_dir/ superset-0.28.1-py3-none-any.whl
+$build_venv/bin/pip wheel --trusted-host pypi.org --trusted-host files.pythonhosted.org -w $wheels_dir -r $deploy_dir/frozen-requirements.txt
