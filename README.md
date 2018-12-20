@@ -4,7 +4,13 @@ To build and update this deploy repo, follow these steps.
   https://github.com/apache/incubator-superset/blob/master/UPDATING.md
   # Or https://github.com/wikimedia/incubator-superset/blob/wikimedia/UPDATING.md
 
-  # First modify Superset's version in frozen-requirements.txt
+  # NOTE:  We currently use a fork of superset. setup.py has
+  # been patched to help with auto building.  It should be
+  # safe to point superset in frozen-requirements.txt at
+  # the git URL of our fork.  To update the wikimedia
+  # deployment of superset, don't change frozen-requirements.txt.
+  # Instead, update the wikimedia branch of incubator-superset
+  # on github, and rebuild.
 
   # Build the wheels into a temp virtualenv.
   ./build_wheels.sh
