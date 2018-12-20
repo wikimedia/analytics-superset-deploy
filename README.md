@@ -1,14 +1,14 @@
-To build/update this deploy repo, first use pip to install
-all dependencies as wheels into the wheels/ directory. This
-is done by the build_wheels.sh script.  Then make a commit
-to include new files in artifacts/.
+To build and update this deploy repo, follow these steps.
 
   # Check changelog to spot db upgrades, etc..
   https://github.com/apache/incubator-superset/blob/master/UPDATING.md
+  # Or https://github.com/wikimedia/incubator-superset/blob/wikimedia/UPDATING.md
 
-  # Modify Superset's version in frozen-requirements.txt
-  # Build
+  # First modify Superset's version in frozen-requirements.txt
+
+  # Build the wheels into a temp virtualenv.
   ./build_wheels.sh
+
   # Commit and send it to review
   git add artifacts
   git commit -m 'Updating wheels for superset and dependencies'

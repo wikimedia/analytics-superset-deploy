@@ -27,20 +27,23 @@ sudo apt-get --yes install \
   libldap2-dev \
   $libmysqlclient_dev_package
 
-# If you update any requirements, you should also update this timestamp.
+# This will be set to the mtime of frozen-requirements.txt
 # This makes it more likely that wheels built with the same versions
 # will be byte for byte identical.
-export SOURCE_DATE_EPOCH=1534958257
+export SOURCE_DATE_EPOCH=$(stat -c %Y ${deploy_dir}/frozen-requirements.txt)
 
-rm -rf $wheels_dir
-mkdir -p $wheels_dir
 
 
 
 # Build in a virtualenv, but install wheel files to $wheels_dir.
-build_venv=/tmp/superset-build-venv
+build_venv=/tmp/superset-build-venv-${SOURCE_DATE_EPOCH}
 test -e $build_venv && rm -rf $build_venv
 virtualenv --python python3 --system-site-packages $build_venv
+
+
+# Remove any previously installed wheels.
+rm -rf $wheels_dir
+mkdir -p $wheels_dir
 
 # Weird bug where numpy needs to be installed before pandas is built.
 # https://github.com/pandas-dev/pandas/issues/16715#issuecomment-309498415
