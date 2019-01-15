@@ -1,17 +1,5 @@
 mysqlclient==1.3.12
-pyhive==0.5.1
-
-# Superset's dependencies specify these, but we need
-# to include them here anyway to make sure these are the ones
-# that area installed.  Otherwise we get messages about
-# mismatched versions when installing from $wheels_dir/*.
-# If during create_virtuaalenv you get a warning about
-# mismatched package versions, you should change set them
-# preoperly here and rebuild wheels.
-click==6.7
-future==0.16.0
-
+pyhive==0.5.0
 # Wikimedia uses a fork of superset to apply our own fixes.
 git+https://github.com/wikimedia/incubator-superset.git@wikimedia#egg=superset
-# ../incubator-superset
 
