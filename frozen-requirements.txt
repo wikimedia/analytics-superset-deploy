@@ -8,10 +8,16 @@ pyhive==0.5.1
 # If during create_virtuaalenv you get a warning about
 # mismatched package versions, you should change set them
 # preoperly here and rebuild wheels.
-click==6.7
-future==0.16.0
+#click==6.7
+#future==0.16.0
 
 # Wikimedia uses a fork of superset to apply our own fixes.
-git+https://github.com/wikimedia/incubator-superset.git@wikimedia#egg=superset
+/home/vagrant/incubator-superset-wikimedia
 # ../incubator-superset
-
+#boto3==1.4.7
+#botocore==1.7.48
+# https://github.com/apache/incubator-superset/pull/6765
+numpy==1.15.2
+pandas==0.23.4
+#https://github.com/apache/incubator-superset/issues/6977
+sqlalchemy==1.2.18

@@ -44,7 +44,7 @@ sudo apt-get --yes install \
   libsasl2-dev \
   libldap2-dev \
   $libmysqlclient_dev_package \
-  nodejs=10.14.2-1nodesource1 \
+  nodejs \
   yarn
 
 # This will be set to the mtime of frozen-requirements.txt
@@ -70,6 +70,6 @@ mkdir -p $wheels_dir
 # Build this wheel first and install it into our build virtualenv.
 # This will let pandas build against the version of numpy that we will
 # actually install.
-$build_venv/bin/pip wheel -w $wheels_dir numpy
+$build_venv/bin/pip wheel -w $wheels_dir numpy==1.15.2
 $build_venv/bin/pip install --no-index --find-links $wheels_dir numpy
 $build_venv/bin/pip wheel --trusted-host pypi.org --trusted-host files.pythonhosted.org -w $wheels_dir -r $deploy_dir/frozen-requirements.txt
