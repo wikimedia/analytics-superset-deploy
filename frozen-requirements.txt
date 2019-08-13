@@ -3,6 +3,16 @@ mysqlclient==1.3.12
 # Use the [hive] parameter to include thrift deps
 pyhive[hive]==0.6.1
 
+# Pydruid is included via setup.py but we changed it
+# to look into requirements.txt, that doesn't contain it.
+pydruid>=0.5.2
+
+# Wikimedia uses a fork of superset to apply our own fixes.
+# Change this directory with the path of your superset repository.
+/home/vagrant/incubator-superset-wikimedia
+
+# Old issues to keep as reference
+# -------------------------------------------------------------
 # Superset's dependencies specify these, but we need
 # to include them here anyway to make sure these are the ones
 # that area installed.  Otherwise we get messages about
@@ -13,13 +23,12 @@ pyhive[hive]==0.6.1
 #click==6.7
 #future==0.16.0
 
-# Wikimedia uses a fork of superset to apply our own fixes.
-/home/vagrant/incubator-superset-wikimedia
-# ../incubator-superset
 #boto3==1.4.7
 #botocore==1.7.48
+
 # https://github.com/apache/incubator-superset/pull/6765
-numpy==1.15.2
-pandas==0.23.4
+#numpy==1.15.2
+#pandas==0.23.4
+
 #https://github.com/apache/incubator-superset/issues/6977
-sqlalchemy==1.2.18
+#sqlalchemy==1.2.18
