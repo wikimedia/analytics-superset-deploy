@@ -52,24 +52,17 @@ sudo apt-get --yes install \
 # will be byte for byte identical.
 export SOURCE_DATE_EPOCH=$(stat -c %Y ${deploy_dir}/frozen-requirements.txt)
 
-
-
-
 # Build in a virtualenv, but install wheel files to $wheels_dir.
 build_venv=/tmp/superset-build-venv-${SOURCE_DATE_EPOCH}
 test -e $build_venv && rm -rf $build_venv
-virtualenv --python python3 --system-site-packages $build_venv
 
+# Rely on pip installed on the OS, to avoid issues with the one
+# used by create_virtualenv.sh
+# More info: https://phabricator.wikimedia.org/T236690#5697280
+/usr/bin/virtualenv --python python3 --system-site-packages --no-pip $build_venv
 
 # Remove any previously installed wheels.
 rm -rf $wheels_dir
 mkdir -p $wheels_dir
 
-# Weird bug where numpy needs to be installed before pandas is built.
-# https://github.com/pandas-dev/pandas/issues/16715#issuecomment-309498415
-# Build this wheel first and install it into our build virtualenv.
-# This will let pandas build against the version of numpy that we will
-# actually install.
-#$build_venv/bin/pip wheel -w $wheels_dir numpy==1.15.2
-#$build_venv/bin/pip install --no-index --find-links $wheels_dir numpy
-$build_venv/bin/pip wheel --trusted-host pypi.org --trusted-host files.pythonhosted.org -w $wheels_dir -r $deploy_dir/frozen-requirements.txt
+/usr/bin/pip3 wheel --trusted-host pypi.org --trusted-host files.pythonhosted.org -w $wheels_dir -r $deploy_dir/frozen-requirements.txt
