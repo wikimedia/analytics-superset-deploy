@@ -1,0 +1,8 @@
+# Note: version 0.36.0 was built using a custom process via Docker,
+# since some extra commits needed to be added on top of the official
+# Pypi release. See the related frozen-requirements.txt file.
+# Note 2: custom builds are to be considered an exception, since we
+# prefer to stick with Pypi releases as much as possibile.
+pydruid==0.5.6
+pyhive[kerberos,presto]==0.6.2
+apache-superset[presto,mysql,druid]==0.36.0
