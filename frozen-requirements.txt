@@ -1,18 +1,4 @@
-# This version of requirements.txt was used to create a custom
-# Superset 0.36 build via the following procedure:
-# docker run --rm --volume ./superset_deploy:/superset_deploy --volume ./superset-upstream:/superset_upstream -it debian:buster bash
-# Inside docker:
-# cd /superset_upstream/superset-frontend/
-# npm ci && npm run build
-# cd /superset_deploy
-# ./build_wheels.sh
-pydruid==0.5.6
+pydruid
 pyhive[kerberos,presto]==0.6.2
-mysqlclient==1.4.2.post1
-tableschema
-thrift>=0.11.0, <1.0.0
-requests==2.22.0
-# https://github.com/apache/incubator-superset/pull/8493#issuecomment-632738195
-sqlalchemy-utils==0.36.4
 gunicorn[gevent]
-/superset_upstream
+apache-superset[presto,mysql,druid]==0.37.2
