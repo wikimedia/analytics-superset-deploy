@@ -5,8 +5,8 @@ To build and update this deploy repo, follow these steps.
   # Or https://github.com/wikimedia/incubator-superset/blob/wikimedia/UPDATING.md
 
   # Update frozen-requirements.txt with the new version of superset
-  # Run docker like the following:
-  run --rm --volume $(pwd)/superset_deploy:/superset_deploy -it debian:buster bash
+  # Run docker like the following on deneb.codfw.wmnet:
+  docker run --rm --volume $(pwd)/deploy-superset:/superset_deploy -it docker-registry.wikimedia.org/wikimedia-buster:latest bash
 
   # Build the wheels into a temp virtualenv.
   cd /superset_deploy
@@ -15,7 +15,7 @@ To build and update this deploy repo, follow these steps.
 
   # Test if the virtual environment is created without dependency errors
   ./create_virtualenv.sh
-  
+
 At this point, you can close the Docker container and return to the repo.
 
   # Commit and send it to review

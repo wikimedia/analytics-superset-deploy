@@ -2,3 +2,4 @@ pydruid
 pyhive[kerberos,presto]==0.6.2
 gunicorn[gevent]
 apache-superset[presto,mysql,druid]==0.37.2
+pylibmc==1.6.1
