@@ -1,4 +1,4 @@
 pyhive[kerberos,presto]==0.6.2
 gunicorn[gevent]
-apache-superset[presto,mysql,druid]==1.3.1
+apache-superset[presto,mysql,druid]==1.3.2
 pylibmc==1.6.1
