@@ -6,4 +6,4 @@ set -xe
 
 apt-get update
 apt-get upgrade -y
-apt-get install -y sudo lsb-release libkrb5-dev
+apt-get install -y sudo lsb-release libkrb5-dev libmemcached-dev

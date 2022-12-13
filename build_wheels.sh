@@ -38,7 +38,7 @@ rm -rf $wheels_dir
 mkdir -p $wheels_dir
 
 # Update pip to be able to install the manylinux2010 and later wheel format.
-$build_venv/bin/pip install --upgrade pip==21.0.1
+$build_venv/bin/pip install --upgrade pip==22.3.1
 # Package pip itself as a wheel, so that pip can install the new wheels upon deployment
-$build_venv/bin/pip wheel -w $wheels_dir pip==21.0.1
+$build_venv/bin/pip wheel -w $wheels_dir pip==22.3.1
 $build_venv/bin/pip wheel --trusted-host pypi.org --trusted-host files.pythonhosted.org -w $wheels_dir -r $deploy_dir/$requirements_file

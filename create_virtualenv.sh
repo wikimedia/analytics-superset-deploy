@@ -17,7 +17,7 @@ virtualenv --python python3 --never-download $venv
 # pip install with it will not be able to find superset in the wheels dir.
 # Instead, just install all wheels in the wheels dir.
 
-# First upgrade pip to pip-21 so that newer wheels will be supported
-$venv/bin/pip install --no-index --find-links $wheels_dir $wheels_dir/pip-21.0.1-py3-none-any.whl
+# First upgrade pip to pip-22 so that newer wheels will be supported
+$venv/bin/pip install --no-index --find-links $wheels_dir $wheels_dir/pip-22.3.1-py3-none-any.whl
 
 $venv/bin/pip install --no-deps --no-index --find-links $wheels_dir $wheels_dir/*.whl

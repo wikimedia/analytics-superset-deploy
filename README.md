@@ -1,9 +1,7 @@
 To build and update this deploy repo, follow these steps.
 
 Check changelog to spot db upgrades, etc..
-https://github.com/apache/incubator-superset/blob/master/UPDATING.md
-
-Or https://github.com/wikimedia/incubator-superset/blob/wikimedia/UPDATING.md
+https://github.com/apache/superset/blob/master/UPDATING.md
 
 There are two ways to build the wheels used to deploy: using an upstream pypi release,
 and using a local clone, which may have additional commits added by you or upstream.
@@ -12,8 +10,8 @@ and using a local clone, which may have additional commits added by you or upstr
 
 ```sh
 # Update frozen-requirements.txt with the new version of superset
-# Run docker like the following on deneb.codfw.wmnet:
-docker run --rm --volume $(pwd)/deploy-superset:/superset_deploy -it docker-registry.wikimedia.org/wikimedia-buster:latest bash
+# Run docker like the following on a build server:
+docker run --rm --volume $(pwd)/:/superset_deploy --volume $(pwd)/superset_upstream:/superset_upstream -it docker-registry.wikimedia.org/bullseye:latest bash
 
 cd /superset_deploy
 
@@ -39,7 +37,7 @@ export https_proxy=http://webproxy.eqiad.wmnet:8080
 git clone https://github.com/apache/superset superset_upstream
 
 # Run docker syncing superset_upstream:
-docker run --rm --volume $(pwd)/deploy-superset:/superset_deploy --volume $(pwd)/superset_upstream:/superset_upstream -it docker-registry.wikimedia.org/wikimedia-buster:latest bash
+docker run --rm --volume $(pwd)/:/superset_deploy --volume $(pwd)/superset_upstream:/superset_upstream -it docker-registry.wikimedia.org/bullseye:latest bash
 
 # Use proxy for apt, otherwise apt-get update hangs when connecting to security.debian.org:80
 echo 'Acquire::http::Proxy "http://webproxy.eqiad.wmnet:8080";' > /etc/apt/apt.conf
