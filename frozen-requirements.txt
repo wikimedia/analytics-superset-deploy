@@ -1,16 +1,4 @@
-pyhive[kerberos,presto]==0.6.2
+pyhive[kerberos,presto]==0.7.0
 gunicorn[gevent]
-apache-superset[presto,mysql,druid]==1.5.3
+apache-superset[hive,presto,mysql,druid,trino,spark,postgres]
 pylibmc==1.6.1
-trino
-
-# Pinning markupsafe because of this issue:
-# https://github.com/pallets/markupsafe/issues/282
-# If superset upgrades flask or jinja, it may become unnecessary.
-markupsafe==2.0.1
-
-# Pinning importlib-metadata because of issues with version 5.0 and above
-importlib-metadata==4.13.0
-
-# Pinning cryptography because of issues with version 39.0.0 and above
-cryptography==38.0.4

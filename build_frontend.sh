@@ -6,13 +6,13 @@ set -ex
 apt-get update
 apt-get install -y curl ca-certificates gpg
 
-# Taken from https://deb.nodesource.com/setup_14.x
+# Taken from https://deb.nodesource.com/setup_16.x
 keyring='/usr/share/keyrings'
 node_key_url='https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
 local_node_key="$keyring/nodesource.gpg"
 curl -s $node_key_url | gpg --dearmor | tee $local_node_key >/dev/null
-echo "deb [signed-by=$local_node_key] https://deb.nodesource.com/node_14.x buster main" > /etc/apt/sources.list.d/nodesource.list
-echo "deb-src [signed-by=$local_node_key] https://deb.nodesource.com/node_14.x buster main" >> /etc/apt/sources.list.d/nodesource.list
+echo "deb [signed-by=$local_node_key] https://deb.nodesource.com/node_16.x bullseye main" > /etc/apt/sources.list.d/nodesource.list
+echo "deb-src [signed-by=$local_node_key] https://deb.nodesource.com/node_16.x bullseye main" >> /etc/apt/sources.list.d/nodesource.list
 
 apt-get update
 apt-get install -y nodejs
