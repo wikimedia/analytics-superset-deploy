@@ -26,7 +26,17 @@ git config --global --add safe.directory /superset_deploy
 git clone --branch ${SUPERSET_VERSION} --single-branch https://github.com/apache/superset.git superset_upstream ||
 ( cd superset_upstream; git checkout ${SUPERSET_VERSION} )
 
+# Apply any patches necessary below.
+cd /superset_deploy/superset_upstream
+
 # The following is a temporary workaround for the issues identifed in https://phabricator.wikimedia.org/T335356#9478404
 # It can be removed as soon as https://github.com/apache/superset/pull/26782 is approved by the upstream project and released.
-cd /superset_deploy/superset_upstream
-curl https://github.com/brouberol/superset/commit/6cab1dcd13f0466f86e3e5139e7e3e0cbe5e58ae.patch | git apply -v --index
+curl https://github.com/brouberol/superset/commit/3acbac83b598752e732045c981bbf86bb7434525.patch | git apply -v --index
+
+# The following is a temporary workaround for an issue with the PRESTO_EXPAND_DATA feature. See: https://phabricator.wikimedia.org/T340144#9498742
+# and https://github.com/apache/superset/pull/26892 for more information. It can be removed once this patch has been merged upstream.
+curl https://github.com/apache/superset/commit/e9302c84a461e96130de7c6f9ffc66f8692197ba.patch | git apply -v --index
+
+# Enable a requested feature that is proposed in an upstream PR to expand the nested columns as key value pairs.
+# See https://github.com/apache/superset/discussions/26915 for discussion.
+curl https://github.com/apache/superset/commit/de39c7626616ff6f7c326b00cfbd63688da7c704.patch | git apply -v --index
