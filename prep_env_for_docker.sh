@@ -35,7 +35,7 @@ curl https://github.com/brouberol/superset/commit/3acbac83b598752e732045c981bbf8
 
 # The following is a temporary workaround for an issue with the PRESTO_EXPAND_DATA feature. See: https://phabricator.wikimedia.org/T340144#9498742
 # and https://github.com/apache/superset/pull/26892 for more information. It can be removed once this patch has been merged upstream.
-curl https://github.com/apache/superset/commit/e9302c84a461e96130de7c6f9ffc66f8692197ba.patch | git apply -v --index
+curl https://github.com/apache/superset/commit/e3576793478427de3ee5cc08b8f6eda1112b48f6.patch | git apply -v --index
 
 # Enable a requested feature that is proposed in an upstream PR to expand the nested columns as key value pairs.
 # See https://github.com/apache/superset/discussions/26915 for discussion.
